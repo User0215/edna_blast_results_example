@@ -1,147 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BLAST Results - Choristoneura Species Matches</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8f9fa;
-            color: #333;
-            padding: 20px;
-            margin: 0;
-        }
-        h1 {
-            text-align: center;
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-        .subtitle {
-            text-align: center;
-            color: #7f8c8d;
-            margin-bottom: 30px;
-        }
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 14px;
-        }
-        th {
-            background-color: #34495e;
-            color: white;
-            padding: 12px 10px;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            font-weight: 600;
-            border-bottom: 3px solid #2c3e50;
-        }
-        td {
-            padding: 10px 8px;
-            border-bottom: 1px solid #ecf0f1;
-            text-align: center;
-        }
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        tr:hover {
-            background-color: #f1f8ff;
-            transition: background-color 0.2s;
-        }
-        .qseqid {
-            text-align: left;
-            font-family: monospace;
-            font-size: 13px;
-            max-width: 280px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-        .sseqid-name {
-            text-align: left;
-            font-weight: 500;
-            color: #2c3e50;
-        }
-        .high-identity {
-            background-color: #d4edda;
-            color: #155724;
-        }
-        .bitscore {
-            font-weight: bold;
-            color: #27ae60;
-        }
-        .evalue {
-            font-family: monospace;
-        }
-        .header-info {
-            padding: 20px;
-            background: linear-gradient(135deg, #34495e, #2c3e50);
-            color: white;
-            text-align: center;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>BLAST Results</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+
+  h2 {
+    margin-bottom: 10px;
+  }
+
+  .table-container {
+    overflow-x: auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 1200px;
+  }
+
+  thead {
+    background-color: #2c3e50;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  th, td {
+    padding: 8px 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    white-space: nowrap;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+
+  th {
+    font-weight: bold;
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="header-info">
-            <h1>BLAST Search Results</h1>
-            <p class="subtitle">Query: SH00556:35:GW250807AmpEZ07312025 • Run ID: 7</p>
-            <p>High-similarity matches to <strong>Choristoneura</strong> species (Spruce Budworm complex)</p>
-        </div>
-        
-        <table>
-            <thead>
-                <tr>
-                    <th>blast_run_id</th>
-                    <th>qseqid</th>
-                    <th>sseqid</th>
-                    <th>sseqid_name</th>
-                    <th>pident (%)</th>
-                    <th>length</th>
-                    <th>mismatch</th>
-                    <th>gapopen</th>
-                    <th>qstart</th>
-                    <th>qend</th>
-                    <th>sstart</th>
-                    <th>send</th>
-                    <th>evalue</th>
-                    <th>bitscore</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- All your original rows go here. For brevity, I'm showing the first few and the structure.
-                     Replace the comment below with all the <tr>...</tr> rows from your original file. -->
 
-                <tr>
-                    <td>7</td>
-                    <td class="qseqid" title="SH00556:35:GW250807AmpEZ07312025:1:1408:9075:5915">SH00556:35:GW250807AmpEZ07312025:1:1408:9075:5915</td>
-                    <td>71142</td>
-                    <td class="sseqid-name">Choristoneura pinus</td>
-                    <td class="high-identity">95.588</td>
-                    <td>204</td>
-                    <td>9</td>
-                    <td>0</td>
-                    <td>26</td>
-                    <td>229</td>
-                    <td>1</td>
-                    <td>204</td>
-                    <td class="evalue">3.28e-88</td>
-                    <td class="bitscore">327</td>
-                </tr>
+<h2>21_R1_001.fasta BLAST Results Table</h2>
+<p>Filtered by pident > 95 and length > 150.</p>
+<p>
+Headers: <br>
+qseqid -> query or source (gene) sequence id <br>
+sseqid -> subject or target (reference genome) sequence id <br>
+pident -> percentage of identical positions <br>
+length -> alignment length (sequence overlap) <br>
+mismatch -> number of mismatches <br>
+gapopen -> number of gap openings <br>
+qstart -> start of alignment in query <br>
+qend -> end of alignment in query <br>
+sstart -> start of alignment in subject <br>
+send -> end of alignment in subject <br>
+evalue -> expect value <br>
+bitscore -> bit score
+</p> 
 
-                <!-- Paste all other <tr> rows from your original table here -->
-                <!-- ... (continue with every row you have) ... -->
-		<tr>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>blast_run_id</th>
+<th>qseqid</th>
+<th>sseqid</th>
+<th>sseqid_name</th>
+<th>pident</th>
+<th>length</th>
+<th>mismatch</th>
+<th>gapopen</th>
+<th>qstart</th>
+<th>qend</th>
+<th>sstart</th>
+<th>send</th>
+<th>evalue</th>
+<th>bitscore</th>
+</tr>
+</thead>
+<tbody>
+
+<!-- ORIGINAL DATA (UNCHANGED) -->
+<!-- pasted directly from your file -->
+<tr>
 <td align="right">7</td>
 <td>SH00556:35:GW250807AmpEZ07312025:1:1408:9075:5915</td>
 <td align="right">71142</td>
@@ -8525,13 +8481,5 @@
 <td>2.5000000000000003e-99</td>
 <td align="right">364</td>
 </tr>
-            </tbody>
-        </table>
-    </div>
+</tbody>
 
-    <script>
-        // Optional: Add simple sorting functionality if desired
-        console.log("BLAST results table loaded successfully. Total rows:", document.querySelectorAll('tbody tr').length);
-    </script>
-</body>
-</html>
